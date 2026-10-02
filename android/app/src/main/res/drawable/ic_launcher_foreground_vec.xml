@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- radar ring -->
+    <path android:pathData="M54,27 A27,27 0 1,1 53.99,27 Z"
+        android:strokeColor="#3FBFA2" android:strokeWidth="1.6" android:fillColor="#00000000" />
+    <path android:pathData="M54,22 L54,30 M54,78 L54,86 M22,54 L30,54 M78,54 L86,54"
+        android:strokeColor="#62F0CF" android:strokeWidth="2" />
+    <!-- jet -->
+    <path android:pathData="M54,33 L57.5,46 L72,58 L57.5,58 L60,71 L48,71 L50.5,58 L36,58 L50.5,46 Z"
+        android:fillColor="#62F0CF" />
+</vector>

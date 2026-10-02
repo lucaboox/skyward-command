@@ -1,0 +1,22 @@
+{
+  "name": "skyward-command",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Skyward Command - air-war command center strategy game",
+  "scripts": {
+    "vendor": "node -e \"const fs=require('fs');fs.cpSync('node_modules/leaflet/dist','www/vendor/leaflet',{recursive:true})\"",
+    "serve": "python -m http.server 5173 --directory www",
+    "sync": "npm run vendor && npx cap sync android",
+    "apk": "npm run sync && cd android && gradlew.bat assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/app": "^8.1.1",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/haptics": "^8.0.2",
+    "leaflet": "^1.9.4"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2"
+  }
+}

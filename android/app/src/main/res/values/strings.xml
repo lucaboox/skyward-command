@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Skyward Command</string>
+    <string name="title_activity_main">Skyward Command</string>
+    <string name="package_name">com.skyward.command</string>
+    <string name="custom_url_scheme">com.skyward.command</string>
+</resources>

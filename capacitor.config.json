@@ -1,0 +1,7 @@
+{
+  "appId": "com.skyward.command",
+  "appName": "Skyward Command",
+  "webDir": "www",
+  "server": { "androidScheme": "https" },
+  "android": { "backgroundColor": "#070b0d" }
+}
