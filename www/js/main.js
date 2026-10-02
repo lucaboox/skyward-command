@@ -14,6 +14,7 @@ function boot() {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
   map.setView([40, 20], 3);
+  guardCamera(map);
   Settings.apply();
   initRender(map);
   initUI(map);
@@ -142,3 +143,23 @@ function frame(now) {
 }
 
 window.addEventListener('load', boot);
+
+// Animated camera moves divide by the map's size, so on a zero-size map (hidden page, app
+// launching in the background, mid fold/rotate) they produce NaN coordinates and throw.
+// In that case jump straight to the target instead; animations resume once the map has a size.
+function guardCamera(map) {
+  for (const m of ['flyTo', 'flyToBounds', 'fitBounds', 'panTo']) {
+    const orig = map[m].bind(map);
+    map[m] = (...a) => {
+      const sz = map.getSize();
+      if (sz.x && sz.y) return orig(...a);
+      try {
+        if (m === 'flyTo') map.setView(a[0], a[1] ?? map.getZoom(), { animate: false });
+        else if (m === 'panTo') map.setView(a[0], map.getZoom(), { animate: false });
+        else map.setView(L.latLngBounds(a[0]).getCenter(), (a[1] && a[1].maxZoom) || map.getZoom(), { animate: false });
+      } catch (e) { /* nothing sensible to do without a viewport */ }
+      return map;
+    };
+  }
+}
+
